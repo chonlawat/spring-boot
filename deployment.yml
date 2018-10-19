@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: demo-service-deployment2
+spec:
+    replicas: 2 # tells deployment to run 2 pods matching the template
+    template: # create pods using pod definition in this template
+        metadata:
+          labels:
+            app: demo-service2
+        spec:
+          containers:
+          - name: demo-service2
+            image: docker.local:5000/myapp2:latest
+           # command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
+            ports:
+            - containerPort: 8088
